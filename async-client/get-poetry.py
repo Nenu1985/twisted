@@ -76,6 +76,7 @@ def get_poetry(sockets):
                         # this error code means we would have
                         # blocked if the socket was blocking.
                         # instead we skip to the next socket
+                        # print(sock, e)
                         break
                     raise
                 else:
