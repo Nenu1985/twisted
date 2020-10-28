@@ -1,21 +1,28 @@
 
 from twisted.internet import reactor
-
+from twisted.internet.task import LoopingCall
 class Countdown:
     def __init__(self, n):
 
         self.counter = n
 
     def count(self):
-        if self.counter == 0:
-            reactor.stop()
-        else:
-            print(self.counter, '...')
-            self.counter -= 1
-            reactor.callLater(1, self.count)
+
+        print(self.counter, '...')
+        self.counter -= 1
+        return self.counter
+
 
 from twisted.internet import reactor
-reactor.callWhenRunning(Countdown(5).count)
+c1 = Countdown(5)
+c1_loop = LoopingCall(c1.count)
+
+c1_loop.start(1.0)
+
+# while True:
+#     print(c1.counter)
+
+
 # reactor.callWhenRunning(Countdown(4).count)
 print('Start!')
 reactor.run()
