@@ -35,7 +35,7 @@ for that to work.
     _, addresses = parser.parse_args()
 
     if not addresses:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -50,7 +50,7 @@ for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetrySocket(object):
@@ -92,13 +92,13 @@ class PoetrySocket(object):
         poem = ''
 
         while True: # we're just reading everything (blocking) -- broken!
-            bytes = self.sock.recv(1024)
+            bytes = self.sock.recv(1024).decode()
             if not bytes:
                 break
             poem += bytes
 
-        msg = 'Task %d: got %d bytes of poetry from %s'
-        print  msg % (self.task_num, len(poem), self.format_addr())
+        msg = f'Task {self.task_num}: got {len(poem)} bytes of poetry from {self.format_addr()}'
+        print (msg)
 
         self.poem = poem
 
@@ -109,7 +109,7 @@ class PoetrySocket(object):
 
     def format_addr(self):
         host, port = self.address
-        return '%s:%s' % (host or '127.0.0.1', port)
+        return f'{host or "127.0.0.1"}:{port}'
 
 
 def poetry_main():
@@ -125,9 +125,9 @@ def poetry_main():
     elapsed = datetime.datetime.now() - start
 
     for i, sock in enumerate(sockets):
-        print 'Task %d: %d bytes of poetry' % (i + 1, len(sock.poem))
+        print(f'Task {i + 1}: {len(sock.poem)} bytes of poetry')
 
-    print 'Got %d poems in %s' % (len(addresses), elapsed)
+    print(f'Got {len(addresses)} poems in {elapsed}')
 
 
 if __name__ == '__main__':
