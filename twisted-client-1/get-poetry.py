@@ -53,13 +53,18 @@ for that to work.
 class PoetrySocket(object):
 
     poem = ''
-
+    
     def __init__(self, task_num, address):
         self.task_num = task_num
+
         self.address = address
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect(address)
-        self.sock.setblocking(0)
+        # conntect with handling an error
+        port_is_open = self.sock.connect_ex(address)  # 0 if port is open
+        if port_is_open == 0:
+            self.sock.setblocking(0)
+        else:
+            main.CONNECTION_LOST
 
         # tell the Twisted reactor to monitor this socket for reading
         from twisted.internet import reactor
