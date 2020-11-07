@@ -4,3 +4,9 @@ and asynchronous programming in Python located here:
   http://krondo.com/?page_id=1327
 
 Dave Peticolas <dave@krondo.com>
+
+convert to third python:
+  2to3 -n twisted-client-2/get-poetry-stack.py
+
+# Twisted chat
+twisted-chat repo is an implementation of a chat from youtube channel 'Python on Papyrus': https://youtu.be/iKtH-SEWWv0?list=PLP6YTIItbLXPxv85Xx8sh8xVk8zMjjcCh
