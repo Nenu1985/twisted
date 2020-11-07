@@ -1,0 +1,72 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-client-2",
+            "program": "${workspaceFolder}/twisted-client-2/get-poetry.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "client",
+            "program": "${workspaceFolder}/blocking-client/get-poetry.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "server10000",
+            "program": "${workspaceFolder}/blocking-server/slowpoetry.py",
+            "args": [
+                "--port",
+                "10000",
+                "poetry/ecstasy.txt",
+                "--num-bytes",
+                "30"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "server10001",
+            "program": "${workspaceFolder}/blocking-server/slowpoetry.py",
+            "args": [
+                "--port",
+                "10001",
+                "poetry/fascination.txt"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "server10002",
+            "program": "${workspaceFolder}/blocking-server/slowpoetry.py",
+            "args": [
+                "--port",
+                "10002",
+                "poetry/science.txt"
+            ]
+        }
+    ]
+}
