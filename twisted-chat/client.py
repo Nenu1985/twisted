@@ -5,10 +5,16 @@ from twisted.internet.endpoints import TCP4ClientEndpoint
 
 
 class Client(Protocol):
+    def __init__(self) -> None:
+        reactor.callInThread(self.send_data)
+
     def dataReceived(self, data: bytes):
         data = data.decode('utf-8')
         print(data)
-        self.transport.write(input(':::').encode('utf-8'))
+
+    def send_data(self):
+        while True:
+            self.transport.write(input().encode('utf-8'))
 
 
 class ClientFactory(ClFactory):
