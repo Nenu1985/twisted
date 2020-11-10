@@ -5,7 +5,7 @@
 import datetime, optparse
 
 from twisted.internet.protocol import Protocol, ClientFactory
-
+from twisted.python.failure import Failure
 
 def parse_args():
     usage = """usage: %prog [options] [hostname]:port ...
@@ -57,9 +57,10 @@ class PoetryProtocol(Protocol):
     def dataReceived(self, data):
         self.poem += data.decode()
         msg = f'Task {self.task_num}: got {len(data)} bytes of poetry from {self.transport.getPeer()}'
-        print(msg)
+        # print(msg)
 
-    def connectionLost(self, reason):
+    def connectionLost(self, reason: Failure):
+        print(f'Task {self.task_num} lost its conntection with the error: {reason.getErrorMessage()}')
         self.poemReceived(self.poem)
 
     def poemReceived(self, poem):
@@ -97,8 +98,9 @@ class PoetryClientFactory(ClientFactory):
         for i in self.poems:
             print(f'Task {i}: {len(self.poems[i])} bytes of poetry')
 
-    def clientConnectionFailed(self, connector, reason):
-        print('Failed to connect to:', connector.getDestination())
+    # we handle this error in factory because protocol works just with created connections.
+    def clientConnectionFailed(self, connector, reason: Failure):
+        print(f'Failed to connect to: {connector.getDestination()} with the error {reason.getErrorMessage()}')
         self.poem_finished()
 
 
