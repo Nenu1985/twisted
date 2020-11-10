@@ -26,12 +26,35 @@
         {
             "type": "python",
             "request": "launch",
+            "name": "twisted-client-2-simple",
+            "program": "${workspaceFolder}/twisted-client-2/get-poetry-simple.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-client-2-stack",
+            "program": "${workspaceFolder}/twisted-client-2/get-poetry-stack.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
             "name": "twisted-client-2",
             "program": "${workspaceFolder}/twisted-client-2/get-poetry.py",
             "args": [
                 "10000",
                 "10001",
                 "10002",
+                "10003"
             ]
         },
         {
