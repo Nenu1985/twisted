@@ -31,7 +31,7 @@ for that to work.
     _, addresses = parser.parse_args()
 
     if not addresses:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -46,7 +46,7 @@ for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetryProtocol(Protocol):
@@ -84,10 +84,10 @@ class PoetryClientFactory(ClientFactory):
 
     def report(self):
         for poem in self.poems:
-            print poem
+            print(poem)
 
     def clientConnectionFailed(self, connector, reason):
-        print 'Failed to connect to:', connector.getDestination()
+        print('Failed to connect to:', connector.getDestination())
         self.poem_finished()
 
 
