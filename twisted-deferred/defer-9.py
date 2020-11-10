@@ -4,13 +4,15 @@ from twisted.internet.defer import Deferred
 
 def got_poem(poem):
     print(poem)
+    return 1
 
 def poem_failed(err):
     print('poem download failed', file=sys.stderr)
     print('I am terribly sorry', file=sys.stderr)
     print('try again later?', file=sys.stderr)
 
-def poem_done(_):
+def poem_done(data):
+    print(data)
     from twisted.internet import reactor
     reactor.stop()
 
