@@ -14,7 +14,7 @@ class Countdown:
             self.counters_state[self.current_counter_idx] = True
             self.counter_finished()
         else:
-            print(self.counter, '...')
+            print(f'{self.current_counter_idx=}->{self.counter} ...')
             self.counter -= 1
             reactor.callLater(1, self.count)
 
@@ -27,8 +27,10 @@ class Countdown:
 from twisted.internet import reactor
 num_of_counters = 3
 conters_state = [False] * num_of_counters
-for i in range(num_of_counters):
-    reactor.callWhenRunning(Countdown(5, conters_state, i).count)
+# for i in range(num_of_counters):
+reactor.callWhenRunning(Countdown(5, conters_state, 0).count)
+reactor.callWhenRunning(Countdown(2, conters_state, 1).count)
+reactor.callWhenRunning(Countdown(4, conters_state, 2).count)
 # reactor.callWhenRunning(Countdown(4).count)
 print('Start!')
 reactor.run()
