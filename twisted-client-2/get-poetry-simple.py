@@ -5,6 +5,7 @@
 import optparse
 
 from twisted.internet.protocol import Protocol, ClientFactory
+from twisted.python.failure import Failure
 
 
 def parse_args():
@@ -54,9 +55,9 @@ class PoetryProtocol(Protocol):
     poem = ''
 
     def dataReceived(self, data):
-        self.poem += data
+        self.poem += data.decode()
 
-    def connectionLost(self, reason):
+    def connectionLost(self, reason: Failure):
         self.poemReceived(self.poem)
 
     def poemReceived(self, poem):
@@ -86,7 +87,7 @@ class PoetryClientFactory(ClientFactory):
         for poem in self.poems:
             print(poem)
 
-    def clientConnectionFailed(self, connector, reason):
+    def clientConnectionFailed(self, connector, reason: Failure):
         print('Failed to connect to:', connector.getDestination())
         self.poem_finished()
 
