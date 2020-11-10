@@ -6,24 +6,24 @@ from twisted.python.failure import Failure
 class RhymeSchemeViolation(Exception): pass
 
 
-print 'Just making an exception:'
-print
+print('Just making an exception:')
+print()
 
-e = RhymeSchemeViolation()
+e = RhymeSchemeViolation('ha ha ha')
 
 failure = Failure(e)
 
 # Note this failure doesn't include any traceback info
-print failure
+print('first failure::: ', failure)
 
-print
-print
+print()
+print()
 
-print 'Catching an exception:'
-print
+print('Catching an exception:')
+print()
 
 def analyze_poem(poem):
-    raise RhymeSchemeViolation()
+    raise RhymeSchemeViolation('ga ga ga')
 
 try:
     analyze_poem("""\
@@ -32,9 +32,9 @@ Violets are violet.
 That's why they're called Violets.
 Duh.
 """)
-except:
-    failure = Failure()
+except Exception as ex:
+    failure2 = Failure(ex) # = failure2 = Failure()
 
 
 # This failure saved both the exception and the traceback
-print failure
+print(f'failure:::', failure2)
