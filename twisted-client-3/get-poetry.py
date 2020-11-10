@@ -5,6 +5,7 @@
 import optparse
 
 from twisted.internet.protocol import Protocol, ClientFactory
+from twisted.internet import reactor
 
 
 def parse_args():
@@ -82,15 +83,13 @@ def get_poetry(host, port, callback):
 
     when the poem is complete.
     """
-    from twisted.internet import reactor
+
     factory = PoetryClientFactory(callback)
     reactor.connectTCP(host, port, factory)
 
 
 def poetry_main():
     addresses = parse_args()
-
-    from twisted.internet import reactor
 
     poems = []
 
