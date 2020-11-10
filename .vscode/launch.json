@@ -83,7 +83,7 @@
         {
             "type": "python",
             "request": "launch",
-            "name": "client",
+            "name": "blocking-client",
             "program": "${workspaceFolder}/blocking-client/get-poetry.py",
             "args": [
                 "10000",
