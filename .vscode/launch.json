@@ -14,14 +14,26 @@
         {
             "type": "python",
             "request": "launch",
-            "name": "twisted-chat-server",
-            "program": "${workspaceFolder}/twisted-chat/server.py",
+            "name": "twisted-deferred",
+            "program": "${workspaceFolder}/twisted-deferred/deferred-simulator.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+            ]
         },
         {
             "type": "python",
             "request": "launch",
-            "name": "twisted-chat-client",
-            "program": "${workspaceFolder}/twisted-chat/client.py",
+            "name": "twisted-client-4",
+            "program": "${workspaceFolder}/twisted-client-4/get-poetry.py",
+            "args": [
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+            ]
         },
         {
             "type": "python",
@@ -125,6 +137,18 @@
                 "10002",
                 "poetry/science.txt"
             ]
-        }
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-chat-server",
+            "program": "${workspaceFolder}/twisted-chat/server.py",
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-chat-client",
+            "program": "${workspaceFolder}/twisted-chat/client.py",
+        },
     ]
 }

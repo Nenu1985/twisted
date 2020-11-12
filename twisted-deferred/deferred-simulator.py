@@ -38,7 +38,7 @@ class Screen(object):
         self.pixels[x,y] = char
 
     def draw_horiz_line(self, x, y, width):
-        for i in range(width):
+        for i in range(int(width)):
             self.draw_char(x + i, y, '-')
 
     def draw_vert_line(self, x, y, height, end_arrow=False):
