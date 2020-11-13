@@ -14,8 +14,73 @@
         {
             "type": "python",
             "request": "launch",
-            "name": "twisted-deferred",
-            "program": "${workspaceFolder}/twisted-deferred/deferred-simulator.py",
+            "name": "poetry-proxy-1000",
+            "program": "${workspaceFolder}/twisted-server-1/poetry-proxy.py",
+            "args": [
+                "--port",
+                "10000",
+                "10001",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-client-6",
+            "program": "${workspaceFolder}/twisted-client-6/get-poetry.py",
+            "args": [
+                "10000",
+                "10002",
+                "10003"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "transform_poetry_10001",
+            "program": "${workspaceFolder}/twisted-server-1/transformedpoetry.py",
+            "args": [
+                "--port",
+                "10001",
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-server-1_10001",
+            "program": "${workspaceFolder}/twisted-server-1/fastpoetry.py",
+            "args": [
+                "--port",
+                "10001",
+                "poetry/ecstasy.txt"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-server-1_10002",
+            "program": "${workspaceFolder}/twisted-server-1/fastpoetry.py",
+            "args": [
+                "--port",
+                "10002",
+                "poetry/fascination.txt"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-server-1_10003",
+            "program": "${workspaceFolder}/twisted-server-1/fastpoetry.py",
+            "args": [
+                "--port",
+                "10003",
+                "poetry/science.txt"
+            ]
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "twisted-client-5-1",
+            "program": "${workspaceFolder}/twisted-client-5/get-poetry-1.py",
             "args": [
                 "10000",
                 "10001",
@@ -41,10 +106,10 @@
             "name": "twisted-client-3-1",
             "program": "${workspaceFolder}/twisted-client-3/get-poetry-1.py",
             "args": [
-                "10000",
-                "10001",
-                "10002",
-                "10003",
+                // "10000",
+                // "10001",
+                // "10002",
+                "10004",
             ]
         },
         {
