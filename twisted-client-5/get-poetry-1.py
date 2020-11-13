@@ -53,7 +53,7 @@ class PoetryProtocol(Protocol):
     poem = ''
 
     def dataReceived(self, data):
-        self.poem += data
+        self.poem += data.decode()
 
     def connectionLost(self, reason):
         self.poemReceived(self.poem)
@@ -111,7 +111,7 @@ def cummingsify(poem):
         return poem.lower()
 
     def gibberish():
-        raise GibberishError()
+        raise GibberishError('GibberishError')
 
     def bug():
         raise CannotCummingsify(poem)
@@ -138,7 +138,7 @@ def poetry_main():
         poems.append(poem)
 
     def poem_failed(err):
-        print('The poem download failed.', file=sys.stderr)
+        print(f'The poem download failed. {err.getErrorMessage()}', file=sys.stderr)
         errors.append(err)
 
     def poem_done(_):
